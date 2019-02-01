@@ -41,38 +41,24 @@ document.addEventListener('DOMContentLoaded', ()=>{
         },
     ]
 
-    const namesData = Object.keys(beastsData);
-    const beastsNames = document.createDocumentFragment();
+    let menuHTML = '';
+    let descriptionHTML = '';
     const beastsDescriptionsFrag = document.createDocumentFragment();
 
     beastsData.forEach((beast)=>{
         const {id, name, description, image} = beast;
         // create menu-items
-        let beastNameDiv = document.createElement('div');
-        beastNameDiv.textContent = name;
-        beastNameDiv.classList.add('menu-item');
-        beastsNames.appendChild(beastNameDiv);
-
-        //create descriptionsItems
-        let beastItem = document.createElement('div');
-        beastItem.classList.add('content-item');
-        // description text
-        let beastDescription = document.createElement('div');
-        beastDescription.textContent = description;
-        beastDescription.classList.add('content-item_text');
-        // and photo
-        let beastPhoto = document.createElement('img');
-        beastPhoto.src = image;
-        beastPhoto.classList.add('content-item_image');
-
-        beastItem.appendChild(beastDescription);
-        beastItem.appendChild(beastPhoto);
-
-        beastsDescriptionsFrag.appendChild(beastItem);
+        menuHTML += `<div class='menu-item'>${name}</div>`;
+        // and description
+        descriptionHTML += 
+            `<div class='content-item'>
+                <div class='content-item_text'>${description}</div>
+                <img class='content-item_image' src='${image}'></img>
+            </div>`
     });
 
-    menu.appendChild(beastsNames);
-    content.appendChild(beastsDescriptionsFrag);
+    menu.insertAdjacentHTML('afterbegin', menuHTML);
+    content.insertAdjacentHTML('afterbegin', descriptionHTML);
 
     const contentItem = document.querySelectorAll('.content-item');
     const menuItem = document.querySelectorAll('.menu-item');

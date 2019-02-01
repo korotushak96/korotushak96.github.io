@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', ()=>{
+const initAnimalsApp = ()=>{
     const burger = document.querySelector('.burger');
     const menu = document.querySelector('.menu');
     const content = document.querySelector('.content');
@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         burger.classList.toggle('change');
         menu.classList.toggle('open');
     });
-    let active;
 
     switchActive=(i)=>{
         contentItem.forEach(item => item.classList.remove('active'));
@@ -86,4 +85,5 @@ document.addEventListener('DOMContentLoaded', ()=>{
             }
         })
     })
-})
+}
+document.addEventListener('DOMContentLoaded', initAnimalsApp())

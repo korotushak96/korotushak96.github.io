@@ -43,7 +43,6 @@ const initAnimalsApp = ()=>{
 
     let menuHTML = '';
     let descriptionHTML = '';
-    const beastsDescriptionsFrag = document.createDocumentFragment();
 
     beastsData.forEach((beast)=>{
         const {id, name, description, image} = beast;
@@ -86,4 +85,5 @@ const initAnimalsApp = ()=>{
         })
     })
 }
-document.addEventListener('DOMContentLoaded', initAnimalsApp())
+
+document.addEventListener('DOMContentLoaded', initAnimalsApp)

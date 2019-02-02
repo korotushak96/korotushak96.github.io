@@ -68,9 +68,11 @@ const initAnimalsApp = ()=>{
     });
 
     switchActive=(i)=>{
-        contentItem.forEach(item => item.classList.remove('active'));
+        contentItem.forEach((item, idx) => {
+            item.classList.remove('active');
+            menuItem[idx].classList.remove('chosen');
+        });
         contentItem[i].classList.toggle('active');
-        menuItem.forEach(item => item.classList.remove('chosen'));
         menuItem[i].classList.toggle('chosen');
     };
 

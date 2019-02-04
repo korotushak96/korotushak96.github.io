@@ -47,7 +47,7 @@ const initAnimalsApp = ()=>{
     beastsData.forEach((beast)=>{
         const {id, name, description, image} = beast;
         // create menu-items
-        menuHTML += `<div class='menu-item'>${name}</div>`;
+        menuHTML += `<div class='menu-item' data-id='${id}'>${name}</div>`;
         // and description
         descriptionHTML += 
             `<div class='content-item'>
@@ -68,10 +68,13 @@ const initAnimalsApp = ()=>{
     });
 
     switchActive=(i)=>{
-        contentItem.forEach((item, idx) => {
-            item.classList.remove('active');
-            menuItem[idx].classList.remove('chosen');
-        });
+        let chosen = document.querySelector('.chosen');
+        if (chosen) {
+            let activeId = chosen.dataset.id - 1;
+            menuItem[activeId].classList.remove('chosen');
+            contentItem[activeId].classList.remove('active')
+        }
+        // menuItem[idx].classList.remove('chosen');
         contentItem[i].classList.toggle('active');
         menuItem[i].classList.toggle('chosen');
     };

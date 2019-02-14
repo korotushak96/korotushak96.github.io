@@ -66,23 +66,27 @@ const gameInit = () => {
     }
   };
 
+  const checkEqFunc = (func, first, second) => {
+    func(first);
+    func(second);
+    if (disabed >= POKEMONS.length) alert("well done!");
+    backSide.forEach(card => card.classList.remove("block"));
+  };
+
+  //   const ifDismatch = (first, second) =>{
+  //     flipCard(first);
+  //     flipCard(second);
+  //     backSide.forEach(card => card.classList.remove("block"));
+  //   }
+
   const checkEq = (first, second) => {
     let cardOne = cards.find(card => first === card.dataset.index).dataset.id;
     let cardTwo = cards.find(card => second === card.dataset.index).dataset.id;
-    if (cardOne ===cardTwo) {
+    if (cardOne === cardTwo) {
       disabed++;
-      setTimeout(() => {
-        disableCard(first);
-        disableCard(second);
-        if (disabed >= POKEMONS.length) alert("well done!");
-        backSide.forEach(card => card.classList.remove("block"));
-      }, 1000);
+      setTimeout(checkEqFunc, 1000, disableCard, first, second);
     } else {
-      setTimeout(() => {
-        flipCard(first);
-        flipCard(second);
-        backSide.forEach(card => card.classList.remove("block"));
-      }, 1000);
+      setTimeout(checkEqFunc, 1000, flipCard, first, second);
     }
     firstCard = -1;
     secondCard = -1;
